@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jsPDF Underline Example</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+
+    <h1>jsPDF Underline Text Example</h1>
+    <button onclick="generatePDF()">Generate PDF with Underlined Text</button>
+
+    <script>
+        function generatePDF() {
+            const { jsPDF } = window.jspdf;
+
+            // Create a new jsPDF instance
+            const doc = new jsPDF();
+
+            // Set font size
+            const fontSize = 12;
+            doc.setFontSize(fontSize);
+
+            const text1 = "lorwm skaljdkla jdklajs ";
+            // Define text and its position
+            const text = "This is underlined text asd asd asd as";
+            const x = 10;
+            const y = 20;
+
+            // Add text
+            doc.text(text, x, y);
+
+            // Get text width to draw underline
+            const textWidth = doc.getTextWidth(text);
+
+            // Calculate underline position (a bit below the text)
+            const underlineY = y + 1;  // Adjust '1' based on the font size
+
+            // Draw underline
+            doc.text(text1, 10, 10)
+            doc.line(x, underlineY, x + textWidth, underlineY);
+
+            // Save the PDF
+            doc.save('underlined_text.pdf');
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Report Generator</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+  <style>
+    body {
+        line-height: 1.6; /* Adjust the line height to 1.6 times the font size */
+    }
+</style>
+</head>
+<body>
+  
+  <form id="reportForm">
+    <p>
+      <u>SLT Initial feeding ax</u><br><br>
+      S/<br><br>
+
+      <!--Face-to-face or Virtual-->
+      <label>
+        <input type="radio" name="group1" value="face" checked>
+        Face-to-face
+      </label>
+        
+      <label>
+        <input type="radio" name="group1" value="virtual">
+        Virtual
+      </label>
+      <br><br>
+
+      <!--Option 1-->
+      <div id="faceOption">
+        
+      <input type="text" id="name1" name="name1"  placeholder="NAME"> was referred for an eating, drinking and swallowing assessment by <input type="text" id="refname1" name="refname1"  placeholder="REFERER NAME" size="12">, <input type="text" id="refpof1" name="refprof1"  placeholder="REFERER PROFESSION" size="20">
+      . <label>
+        <input type="radio" name="gender" value="He">
+        He
+      </label>  
+      <label>
+        <input type="radio" name="gender" value="She">
+        She
+      </label>  was seen at
+      <select id="place" name="place">
+        <option value="place1">WSHC</option>
+        <option value="place2">home</option>
+      </select> with <input type="text" class="broughtby" name="broughtby"  placeholder="BROUGHT BY" size="10">. <input type="checkbox" id="interpreter1" name="interpreter1" ><span id="interText1" style="text-decoration:line-through;">An interpreter was also present.</span> Verbal 
+      consent to feeding assessment and treatment. Consent and candour gained to liaise with GP and HCPs.
+      VOC: Child appeared clean, well and settled. Current age: <input type="number" class="age" name="age"  placeholder="AGE" style="width: 50px;">. 
+    
+    </div>
+    <!--Option 1 END-->
+
+      <!-- Option 2 -->
+      <div id="virtualOption" style="visibility: hidden; display: none;">
+
+      <input type="text" id="name2" name="name2"  placeholder="NAME"> was referred for an eating, drinking and swallowing assessment by <input type="text" id="refname2" name="refname2"  placeholder="REFERER NAME" size="12">, <input type="text" id="refpof2" name="refprof2"  placeholder="REFERER PROFESSION" size="20">. 
+      <select id="comm" name="comm">
+        <option value="comm1">Video</option>
+        <option value="comm2">Telephone</option>
+      </select> consultation conducted with <input type="text" id="broughtby" name="broughtby"  placeholder="BROUGHT BY" size="10"> of [NAME]. <input type="checkbox" id="interpreter2" name="interpreter2" ><span id="interText2" style="text-decoration:line-through;">An interpreter was also present.</span> Verbal 
+      consent to feeding ax and treatment; consent and candour gained to liaise with GP and HCPs; consent gained for use of WhatsApp for purpose of video consultations and video recordings of clinical bedside ax. 
+      <input type="checkbox" id="childSeen" name="childSeen" ><span id="childSeenText" style="text-decoration:line-through;">Child was not seen during the appointment but reported to be well.</span> Current age: <input type="number" class="age" name="age"  placeholder="AGE" style="width: 50px;">.
+    
+    </div>
+    <!--Option 2 END-->
+      <br><br>O/
+    <!-- <label for="date">Date:</label>
+    <input type="date" id="date" name="date" ><br><br>
+
+    <label for="summary">Summary:</label><br>
+    <textarea id="summary" name="summary" rows="4" cols="50" ></textarea><br><br> -->
+    
+    </p>
+    <button type="button" onclick="generatePDF()">Generate PDF</button>
+  </form>
+
+  <script src="./script.js"></script>
+</body>
+</html>
