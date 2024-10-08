@@ -4,16 +4,17 @@ interpreter("interpreter2", "interText2")
 
 const { jsPDF } = window.jspdf;
 const doc = new jsPDF();
-const fontSize = 12;
-const lineHeight = 
+doc.setFont("calibri", "normal")
 
+const fontSize = 12;
+var x = 10;
+var y = 10 + fontSize;
 doc.setFontSize(fontSize);
+
 const isFace = true;
 // INIT FIN
 
 function underLine(text){
-    const x = 10;
-    const y = 20;
 
     // Add text
     doc.text(text, x, y);
@@ -26,12 +27,29 @@ function underLine(text){
     doc.line(x, underlineY, x + textWidth, underlineY);
 }
 
-function generatePDF() {
-    const header = "SLT Initial feeding ax\n\nS/"
-    underLine(header)
+function newLine(){
+    y += 5
+}
+function gap(){
+    y += 30
+}
+function text(txt){
+    doc.text(txt, x, y)
+}
+function textBold(txt){
+    doc.setFont("calibri", "bold")
+    doc.text(txt, x, y)
+    doc.setFont("calibri", "normal")
+}
 
-    const x = 10;
-    const y = 20 + fontSize + lineHeight;
+function generatePDF() {
+    const header = "SLT Initial feeding ax"
+    underLine(header)
+    gap()
+    // skip first part for now
+    text("O/", x, y)
+    newLine()
+    textBold("Case History")
 
     const texts = []
 
@@ -64,24 +82,24 @@ function generatePDF() {
     // doc.text(summary, 10, 40, { maxWidth: 180 });
 
     // Save the PDF
-    texts.forEach((text) => {
-        // Add the text
-        doc.text(text, x, y);
+    // texts.forEach((text) => {
+    //     // Add the text
+    //     doc.text(text, x, y);
 
-        // Calculate text width for the underline
-        const textWidth = doc.getTextWidth(text);
+    //     // Calculate text width for the underline
+    //     const textWidth = doc.getTextWidth(text);
 
-        // Set the Y position for the underline slightly below the text
-        const underlineY = y + 2; // Adjust based on font size
+    //     // Set the Y position for the underline slightly below the text
+    //     const underlineY = y + 2; // Adjust based on font size
 
-        // Draw the underline
-        doc.line(x, underlineY, x + textWidth, underlineY);
+    //     // Draw the underline
+    //     doc.line(x, underlineY, x + textWidth, underlineY);
 
-        // Move Y down for the next line (this automatically shifts text downward)
-        y += fontSize + lineHeight; // fontSize + lineHeight gives space between lines
-    });
+    //     // Move Y down for the next line (this automatically shifts text downward)
+    //     y += fontSize + lineHeight; // fontSize + lineHeight gives space between lines
+    // });
 
-    doc.text(name, 10, 20)
+    // doc.text(name, 10, 20)
     doc.save(`report.pdf`);
   }
 
