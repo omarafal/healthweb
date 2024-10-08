@@ -70,7 +70,7 @@
       <!-- Section 2 -->
       <div>
         <h4>Case History</h4>
-        <ul>
+        <ul >
           <li>Main concerns reported by 
             <select id="reportedBy" name="reportedBy">
             <option value="family">family</option>
@@ -80,7 +80,7 @@
           <li>Strategies parents have attempted already: <input id="sec2_1" type="text"></li>
           <li>Birth and pregnancy: <input id="sec2_2" type="text"></li>
           <li>Medical history:
-            <ul>
+            <ul style="list-style-type: ' - '">
               <li>Diagnoses: <input id="sec2_3_1" type="text"></li>
               <li>Long hospital stays: <input id="sec2_3_2" type="text"></li>
               <li>Vision and hearing: <input id="sec2_3_3" type="text"></li>
@@ -112,7 +112,7 @@
           <li>Refuses: <input id="sec3_4" type="text"></li>
           <li>Onset: <input id="sec3_5" type="text"></li>
           <li>Typical food eaten throughout the day:
-            <ul>
+            <ul style="list-style-type: ' - '">
               <li>Breakfast: <input id="sec3_6_1" type="text"></li>
               <li>Lunch: <input id="sec3_6_2" type="text"></li>
               <li>Diner: <input id="sec3_6_3" type="text"></li>
@@ -134,20 +134,20 @@
           <ul>
             <li>Oro-motor examination <i>(Gross symmetry of facial - closed mouth positioning at rest - saliva management - teeth or cleanliness of mouth - Palate and tongue)</i>: <input id="sec4_1" type="text"></li>
             <li>Voice/Upper Airway <i>(Breath sounds at baseline - vocalisations, dysphonia, breathiness, strain, volume)</i>: <input id="sec4_2" type="text"></li>
-            <li>Communication <i>Attentive to faces, able to communicate enjoyment or refusal</i>: <input id="sec4_3" type="text"></li>
+            <li>Communication <i>(Attentive to faces, able to communicate enjoyment or refusal)</i>: <input id="sec4_3" type="text"></li>
             <li>Oral feeding observation:
-              <ul>
+              <ul style="list-style-type: ' - '">
                 <li>Positioning <i>(Trunk control, neck and jaw support, specialist seating, fatigue)</i>: <input id="sec4_4_1" type="text"></li>
                 <li>Oral-sensory and mealtime behaviours <i>(oral defensiveness, oral aversion, stuffing/pocketing, reaction to novel presentations)</i>: <input id="sec4_4_2" type="text"></li>
-                <li>Water bottle <input id="sec_4_4_3_1" type="text" placeholder="LIQUID" size="10">, IDDSI #<input id="sec_4_4_3_2" type="number" placeholder="LVL" style="width: 40px;"> <i>(lip closure, lip rounding, lip seal, jaw excursions to extract liquid, consecutive swallows)</i>: 
-                  <input id="sec_4_4_3_3" type="text"></li>
-                <li>Cup <input id="sec_4_4_4_1" type="text" placeholder="LIQUID" size="10">, IDDSI #<input id="sec_4_4_4_2" type="number" placeholder="LVL" style="width: 40px;"> <i>(mouth opening and jaw stabilisation, closure around cup lip)</i>: 
-                  <input id="sec_4_4_4_3" type="text"></li>
-                <li>Straw <input id="sec_4_4_5_1" type="text" placeholder="LIQUID" size="10">, IDDSI #<input id="sec_4_4_5_2" type="number" placeholder="LVL" style="width: 40px;"> <i>(lip closure, jaw depression to achieve negative pressure to extract liquid)</i>: 
-                  <input id="sec_4_4_5_3" type="text"></li>
-                <li>Spoon feeding <input id="sec_4_4_6_1" type="text" placeholder="LIQUID" size="10">, IDDSI #<input id="sec_4_4_6_2" type="number" placeholder="LVL" style="width: 40px;"> <i>(anticipation of presentation, mouth closure/clearance, residue)</i>: 
-                  <input id="sec_4_4_6_3" type="text"></li>
-                <li>Chewing <i>(acceptance of food, presented to which side, tongue lateralisation, chew pattern-vertical/diagonal-mature rotary)</i>: <input id="sec_4_4_7" type="text"></li>
+                <li>Water bottle (<input id="sec4_4_3_1" type="text" placeholder="LIQUID" size="10">, IDDSI #<input id="sec4_4_3_2" type="number" placeholder="LVL" style="width: 40px;">) <i>(lip closure, lip rounding, lip seal, jaw excursions to extract liquid, consecutive swallows)</i>: 
+                  <input id="sec4_4_3_3" type="text"></li>
+                <li>Cup (<input id="sec4_4_4_1" type="text" placeholder="LIQUID" size="10">, IDDSI #<input id="sec4_4_4_2" type="number" placeholder="LVL" style="width: 40px;">) <i>(mouth opening and jaw stabilisation, closure around cup lip)</i>: 
+                  <input id="sec4_4_4_3" type="text"></li>
+                <li>Straw (<input id="sec4_4_5_1" type="text" placeholder="LIQUID" size="10">, IDDSI #<input id="sec4_4_5_2" type="number" placeholder="LVL" style="width: 40px;">) <i>(lip closure, jaw depression to achieve negative pressure to extract liquid)</i>: 
+                  <input id="sec4_4_5_3" type="text"></li>
+                <li>Spoon feeding (<input id="sec4_4_6_1" type="text" placeholder="LIQUID" size="10">, IDDSI #<input id="sec4_4_6_2" type="number" placeholder="LVL" style="width: 40px;">) <i>(anticipation of presentation, mouth closure/clearance, residue)</i>: 
+                  <input id="sec4_4_6_3" type="text"></li>
+                <li>Chewing <i>(acceptance of food, presented to which side, tongue lateralisation, chew pattern-vertical/diagonal-mature rotary)</i>: <input id="sec4_4_7" type="text"></li>
               </ul>
             </li>
           </ul>
@@ -158,26 +158,26 @@
       <!-- Section 5 -->
       <div>
         <h4>Impression and Summary</h4>
-        <p><input id="sec_5_1" type="text" placeholder="NAME"> presents with 
-          <select id="sec_5_2" name="presentsWith">
+        <p><input id="sec5_1" type="text" placeholder="NAME"> presents with 
+          <select id="sec5_2" name="presentsWith">
             <option value="mild">mild</option>
             <option value="moderate">moderate</option>
             <option value="severe">severe</option>
-          </select> paediatric feeding disorder characterized by <input id="sec_5_3" type="text" placeholder="DIFFICULTIES"> and
-          impacting on <input id="sec_5_4" type="text" placeholder="IMPACTS">
+          </select> paediatric feeding disorder characterized by <input id="sec5_3" type="text" placeholder="DIFFICULTIES"> and
+          impacting on <input id="sec5_4" type="text" placeholder="IMPACTS">.
         </p>
       </div>
       <div>
-        <p><u>TOMs score <i>(based on core/dysphagia/oral aversion scale)</i></u>: <input id="sec_5_5" type="text"></p>
-        <p>Impairment: <input id="sec_5_6" type="text"></p>
-        <p>Activity: <input id="sec_5_7" type="text"></p>
-        <p>Participation: <input id="sec_5_8" type="text"></p>
-        <p>Well-being (child): <input id="sec_5_9" type="text"></p>
-        <p>Well-being (parent): <input id="sec_5_10" type="text"></p><br>
-        <p>Written and verbal recommendation <i>(handouts given)</i>: <input id="sec_5_11" type="text"></p>
-        <input id="sec_5_12" type="text" placeholder="-">
-        <input id="sec_5_13" type="text" placeholder="-">
-        <input id="sec_5_14" type="text" placeholder="-">
+        <p><u>TOMs score <i>(based on core/dysphagia/oral aversion scale)</i></u>: <input id="sec5_5" type="text"></p>
+        <p>Impairment: <input id="sec5_6" type="text"></p>
+        <p>Activity: <input id="sec5_7" type="text"></p>
+        <p>Participation: <input id="sec5_8" type="text"></p>
+        <p>Well-being (child): <input id="sec5_9" type="text"></p>
+        <p>Well-being (parent): <input id="sec5_10" type="text"></p><br>
+        <p>Written and verbal recommendation <i>(handouts given)</i>: <input id="sec5_11" type="text"></p>
+        <input id="sec5_12" type="text" placeholder="-">
+        <input id="sec5_13" type="text" placeholder="-">
+        <input id="sec5_14" type="text" placeholder="-">
       </div>
       <!-- Section 5 END -->
       <br><br>P/<br>
@@ -185,17 +185,17 @@
       <div>
         <ul>
           <li>Priority: 
-            <select id="sec_6_1_1" name="priority">
+            <select id="sec6_1_1" name="priority">
               <option value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>
             </select>; dysphagia risk - 
-            <select id="sec_6_1_2" name="gar">
+            <select id="sec6_1_2" name="gar">
               <option value="green">green</option>
               <option value="amber">amber</option>
               <option value="red">red</option>
             </select> 
-            <input id="sec_6_1_3" type="number" placeholder="NUM" style="width: 50px;">
+            <input id="sec6_1_3" type="number" placeholder="NUM" style="width: 50px;">
           </li>
           <li><input type="checkbox" id="last1" name="last1" checked><span id="last1txt">SLT RV in <input id="sec_6_2_1" type="text"> months with view to <input id="sec_6_2_2" type="text">.</li>
           <li><input type="checkbox" id="last2" name="last2" checked><span id="last2txt">DC from SLT with recommendations.</li>

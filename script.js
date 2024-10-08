@@ -2,16 +2,35 @@
 interpreter("interpreter1", "interText1")
 interpreter("interpreter2", "interText2")
 
+// const { jsPDF } = window.jspdf;
+// const doc = new jsPDF();
+// doc.setFont("calibri", "normal")
+
 const { jsPDF } = window.jspdf;
-const doc = new jsPDF();
+var doc = new jsPDF();
 doc.setFont("calibri", "normal")
 
 const fontSize = 12;
 var x = 10;
 var y = 10 + fontSize;
-doc.setFontSize(fontSize);
+const pageHeight = doc.internal.pageSize.height;
 
+doc.setFontSize(fontSize)
+
+const bullet = '\u2022'
 const isFace = true;
+
+function init(){
+    const { jsPDF } = window.jspdf;
+    doc = new jsPDF();
+    doc.setFont("calibri", "normal")
+
+    const fontSize = 12
+    x = 10
+    y = 10 + fontSize
+
+    doc.setFontSize(fontSize)
+}
 // INIT FIN
 
 function underLine(text){
@@ -21,85 +40,162 @@ function underLine(text){
 
     const textWidth = doc.getTextWidth(text);
 
-    const underlineY = y + 1;  // Adjust '1' based on the font size
+    const underlineY = y + 1;
 
     // Draw underline
     doc.line(x, underlineY, x + textWidth, underlineY);
 }
 
 function newLine(){
-    y += 5
+    y += 8
 }
 function gap(){
-    y += 30
+    y += 20
+}
+function smallGap(){
+    y += 15
+}
+function checkNewPage(){
+    if(y > (pageHeight - (10 + fontSize))){
+        doc.addPage();
+        y = 10 + fontSize; // reset y for new page
+    }
 }
 function text(txt){
+    checkNewPage()
     doc.text(txt, x, y)
 }
 function textBold(txt){
+    checkNewPage()
     doc.setFont("calibri", "bold")
     doc.text(txt, x, y)
     doc.setFont("calibri", "normal")
 }
-
+function listItem(txt){
+    checkNewPage()
+    var com = `${bullet} ${txt} `
+    doc.text(com, x+3, y)
+}
+function sublistItem(txt){
+    checkNewPage()
+    var com = `- ${txt} `
+    doc.text(com, x+10, y)
+}
+function valueField(id){
+    return document.getElementById(id).value
+}
 function generatePDF() {
-    const header = "SLT Initial feeding ax"
-    underLine(header)
+    init()
+    underLine("SLT Initial feeding ax")
     gap()
     // skip first part for now
     text("O/", x, y)
-    newLine()
+    smallGap()
     textBold("Case History")
+    smallGap()
+    listItem(`Main concerns reported by: ${valueField("reportedBy")}`)
+    newLine()
+    listItem(`Strategies parents have attempted already: ${valueField("sec2_1")}`)
+    newLine()
+    listItem(`Birth and pregnancy: ${valueField("sec2_2")}`)
+    newLine()
+    listItem(`Medical history:`)
+    newLine()
+    sublistItem(`Diagnoses: ${valueField("sec2_3_1")}`)
+    newLine()
+    sublistItem(`Long hospital stays: ${valueField("sec2_3_2")}`)
+    newLine()
+    sublistItem(`Vision and hearing: ${valueField("sec2_3_3")}`)
+    newLine()
+    sublistItem(`Chest health: ${valueField("sec2_3_4")}`)
+    newLine()
+    listItem(`Current medications: ${valueField("sec2_4")}`)
+    newLine()
+    listItem(`Global development history: ${valueField("sec2_5")}`)
+    newLine()
+    listItem(`Weight and height: ${valueField("sec2_6")}`)
+    newLine()
+    listItem(`Regularity of bowel and bladder movements: ${valueField("sec2_7")}`)
+    newLine()
+    listItem(`Sleep: ${valueField("sec2_8")}`)
+    newLine()
+    listItem(`Dentition: ${valueField("sec2_9")}`)
+    newLine()
+    listItem(`Play - sensory play: ${valueField("sec2_10")}`)
+    newLine()
+    listItem(`Communication: ${valueField("sec2_11")}`)
+    newLine()
+    listItem(`Other services / upcoming appointments: ${valueField("sec2_12")}`)
+    newLine()
+    listItem(`Social history: ${valueField("sec2_13")}`)
+    smallGap()
+    textBold("Feeding History")
+    smallGap()
+    listItem(`From birth to weaning: ${valueField("sec3_1")}`)
+    newLine()
+    listItem(`From weaning to now: ${valueField("sec3_2")}`)
+    newLine()
+    listItem(`Accepts: ${valueField("sec3_3")}`)
+    newLine()
+    listItem(`Refuses: ${valueField("sec3_4")}`)
+    newLine()
+    listItem(`Onset: ${valueField("sec3_5")}`)
+    newLine()
+    sublistItem(`Breakfast: ${valueField("sec3_6_1")}`)
+    newLine()
+    sublistItem(`Lunch: ${valueField("sec3_6_1")}`)
+    newLine()
+    sublistItem(`Diner: ${valueField("sec3_6_2")}`)
+    newLine()
+    sublistItem(`Snacks: ${valueField("sec3_6_3")}`)
+    newLine()
+    sublistItem(`Fluids: ${valueField("sec3_6_4")}`)
+    newLine()
+    listItem(`Positioning: ${valueField("sec3_7")}`)
+    newLine()
+    listItem(`Meal time routine: ${valueField("sec3_8")}`)
+    smallGap()
+    textBold("Feeding Assessment")
+    smallGap()
+    text("Alertness and energy levels were appropriate for mealtime assessment.")
+    smallGap()
+    listItem(`Oro-motor examination: ${valueField("sec4_1")}`)
+    newLine()
+    listItem(`Voice/Upper Airway: ${valueField("sec4_2")}`)
+    newLine()
+    listItem(`Communication: ${valueField("sec4_3")}`)
+    newLine()
+    listItem("Oral feeding observation:")
+    newLine()
+    sublistItem(`Positioning: ${valueField("sec4_4_1")}`)
+    newLine()
+    sublistItem(`Oral-sensory and mealtime behaviours: ${valueField("sec4_4_2")}`)
+    newLine()
+    sublistItem(`Water bottle (${valueField("sec4_4_3_1")}, IDDSI ${valueField("sec4_4_3_2")}): ${valueField("sec4_4_3_3")}`)
+    newLine()
+    sublistItem(`Cup (${valueField("sec4_4_4_1")}, IDDSI ${valueField("sec4_4_4_2")}): ${valueField("sec4_4_4_3")}`)
+    newLine()
+    sublistItem(`Straw (${valueField("sec4_4_5_1")}, IDDSI ${valueField("sec4_4_5_2")}): ${valueField("sec4_4_5_3")}`)
+    newLine()
+    sublistItem(`Spoon feeding (${valueField("sec4_4_6_1")}, IDDSI ${valueField("sec4_4_6_2")}): ${valueField("sec4_4_6_3")}`)
+    newLine()
+    sublistItem(`Chewing: ${valueField("sec4_4_7")}`)
+    gap()
+    text("P/")
+    smallGap()
+    textBold("Impression and Summary")
+    smallGap()
+    text(`${valueField("sec5_1")} presents with ${valueField("sec5_2")} paediatric feeding disorder characterized by ${valueField("sec5_3")} and impacting on ${valueField("sec5_4")}`)
+    smallGap()
+    // SPECIAL ----------
+    underLine("TOMs score: ")
+    checkNewPage()
+    doc.text(`${valueField("sec5_5")}`, doc.getTextWidth("TOMs score: ")+11, y)
+    // ------------------
+    newLine()
+    text(`Impairment: ${valueField("sec5_6")}`)
 
-    const texts = []
 
-    const name = document.getElementById(isFace ? "name1" : "name2").value;
-
-    texts.push(name)
-    // const refererName = document.getElementById().value;
-    // const refererProf = document.getElementById().value;
-    // const he_she = document.getElementById().value;
-    // const face_location = document.getElementById().value;
-    // const brought_by = document.getElementById().value;
-    // const interpreter = document.getElementById().value;
-    // const age = document.getElementById().value;
-
-    // const virtual_way = document.getElementById().value;
-    // const child_seen = document.getElementById().value;
-
-    // "[NAME] was referred for an eating, drinking and swallowing assessment by [REFERRER ]. He/She  was seen at WSHC/home  with Mum/Dad . An interpreter was also present . Verbal consent to feeding assessment and treatment. Consent and candour gained to liaise with GP and HCPs. "+
-    // "VOC: Child appeared clean, well and settled. Current age: #;##."
-
-    // // Get form data
-    // // const name = document.getElementById('name').value;
-    // const date = document.getElementById('date').value;
-    // const summary = document.getElementById('summary').value;
-
-    // // Add content to PDF
-    // doc.text(`Report for: ${name}`, 10, 10);
-    // doc.text(`Date: ${date}`, 10, 20);
-    // doc.text(`Summary:`, 10, 30);
-    // doc.text(summary, 10, 40, { maxWidth: 180 });
-
-    // Save the PDF
-    // texts.forEach((text) => {
-    //     // Add the text
-    //     doc.text(text, x, y);
-
-    //     // Calculate text width for the underline
-    //     const textWidth = doc.getTextWidth(text);
-
-    //     // Set the Y position for the underline slightly below the text
-    //     const underlineY = y + 2; // Adjust based on font size
-
-    //     // Draw the underline
-    //     doc.line(x, underlineY, x + textWidth, underlineY);
-
-    //     // Move Y down for the next line (this automatically shifts text downward)
-    //     y += fontSize + lineHeight; // fontSize + lineHeight gives space between lines
-    // });
-
-    // doc.text(name, 10, 20)
     doc.save(`report.pdf`);
   }
 
