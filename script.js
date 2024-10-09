@@ -14,6 +14,8 @@ const fontSize = 12;
 var x = 10;
 var y = 10 + fontSize;
 const pageHeight = doc.internal.pageSize.height;
+const pageWidth = doc.internal.pageSize.width;
+const maxWidth = pageWidth - 20;
 
 doc.setFontSize(fontSize)
 
@@ -47,7 +49,7 @@ function underLine(text){
 }
 
 function newLine(){
-    y += 8
+    y += 6
 }
 function gap(){
     y += 20
@@ -61,28 +63,32 @@ function checkNewPage(){
         y = 10 + fontSize; // reset y for new page
     }
 }
+
 function text(txt){
     checkNewPage()
-    doc.text(txt, x, y)
+    doc.text(txt, x, y, { maxWidth })
 }
 function textBold(txt){
     checkNewPage()
     doc.setFont("calibri", "bold")
-    doc.text(txt, x, y)
+    doc.text(txt, x, y, { maxWidth })
     doc.setFont("calibri", "normal")
 }
 function listItem(txt){
     checkNewPage()
     var com = `${bullet} ${txt} `
-    doc.text(com, x+3, y)
+    doc.text(com, x+3, y, { maxWidth })
 }
 function sublistItem(txt){
     checkNewPage()
     var com = `- ${txt} `
-    doc.text(com, x+10, y)
+    doc.text(com, x+10, y, { maxWidth })
 }
 function valueField(id){
     return document.getElementById(id).value
+}
+function lastIsChecked(id){
+    return document.getElementById(id).checked
 }
 function generatePDF() {
     init()
@@ -185,7 +191,7 @@ function generatePDF() {
     smallGap()
     textBold("Impression and Summary")
     smallGap()
-    text(`${valueField("sec5_1")} presents with ${valueField("sec5_2")} paediatric feeding disorder characterized by ${valueField("sec5_3")} and impacting on ${valueField("sec5_4")}`)
+    text(`${valueField("sec5_1")} presents with ${valueField("sec5_2")} paediatric feeding disorder characterized by ${valueField("sec5_3")} and impacting on ${valueField("sec5_4")}.`)
     smallGap()
     // SPECIAL ----------
     underLine("TOMs score: ")
@@ -194,7 +200,64 @@ function generatePDF() {
     // ------------------
     newLine()
     text(`Impairment: ${valueField("sec5_6")}`)
-
+    newLine()
+    text(`Activity: ${valueField("sec5_7")}`)
+    newLine()
+    text(`Participation: ${valueField("sec5_8")}`)
+    newLine()
+    text(`Well-being (child): ${valueField("sec5_9")}`)
+    newLine()
+    text(`Well-being (parent): ${valueField("sec5_10")}`)
+    smallGap()
+    text("Written and verbal recommendation:")
+    if(valueField("sec5_11") != ""){
+        newLine()
+        text(`- ${valueField("sec5_11")}`)
+    }
+    if(valueField("sec5_12") != ""){
+        newLine()
+        text(`- ${valueField("sec5_12")}`)
+    }
+    if(valueField("sec5_13") != ""){
+        newLine()
+        text(`- ${valueField("sec5_13")}`)
+    }
+    if(valueField("sec5_14") != ""){
+        newLine()
+        text(`- ${valueField("sec5_14")}`)
+    }
+    gap()
+    text("P/")
+    smallGap()
+    listItem(`Priority: ${valueField("sec6_1_1")}; dysphagia-risk - ${valueField("sec6_1_2")} ${valueField("sec6_1_3")}.`)
+    if(lastIsChecked("last1")){
+        newLine()
+        listItem(`SLT RV in ${valueField("sec6_2_1")} months with view to ${valueField("sec_6_2_2")}.`)
+    }
+    if(lastIsChecked("last2")){
+        newLine()
+        listItem("DC from SLT with recommandations.")
+    }
+    if(lastIsChecked("last3")){
+        newLine()
+        listItem("Internal referral for CDT communication.")
+    }
+    if(lastIsChecked("last4")){
+        newLine()
+        listItem(`Letter to GP for: ${"sec6_3"}.`)
+    }
+    if(lastIsChecked("last5")){
+        newLine()
+        listItem(`Refferal for VFSS at: ${"sec6_4"}.`)
+    }
+    if(lastIsChecked("last6")){
+        newLine()
+        listItem("Referral to SSOT for supportive seating at mealtimes.")
+    }
+    if(lastIsChecked("last7")){
+        newLine()
+        listItem(`Referral / Contact DT re: ${"sec6_5"}.`)
+    }
 
     doc.save(`report.pdf`);
   }

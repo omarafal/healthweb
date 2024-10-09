@@ -1,0 +1,21 @@
+body {
+    line-height: 1.6; /* Adjust the line height to 1.6 times the font size */
+}
+
+#sec5_6to10{
+    line-height: 50%;
+    margin-bottom: -10px;
+}
+
+#sec5_6to10 p{
+    margin: 4px;
+}
+
+#sec5_11to14{
+    display: flex;
+    flex-direction: column;
+}
+
+#sec5_11to14{
+    margin-top: -12px;
+}
