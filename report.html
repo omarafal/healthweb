@@ -32,7 +32,7 @@
         
       <input type="text" id="name1" name="name1"  placeholder="NAME"> was referred for an eating, drinking and swallowing assessment by <input type="text" id="refname1" name="refname1"  placeholder="REFERER NAME" size="12">, <input type="text" id="refpof1" name="refprof1"  placeholder="REFERER PROFESSION" size="20">
       . <label>
-        <input type="radio" name="gender" value="He">
+        <input type="radio" name="gender" value="He" checked>
         He
       </label>  
       <label>
@@ -40,11 +40,11 @@
         She
       </label>  was seen at
       <select id="place" name="place">
-        <option value="place1">WSHC</option>
-        <option value="place2">home</option>
-      </select> with <input type="text" class="broughtby" name="broughtby"  placeholder="BROUGHT BY" size="10">. <input type="checkbox" id="interpreter1" name="interpreter1" ><span id="interText1" style="text-decoration:line-through;">An interpreter was also present.</span> Verbal 
+        <option value="WSHC">WSHC</option>
+        <option value="home">home</option>
+      </select> with <input type="text" id="broughtby1" name="broughtby1"  placeholder="BROUGHT BY" size="10">. <input type="checkbox" id="interpreter1" name="interpreter1" ><span id="interText1" style="text-decoration:line-through;">An interpreter was also present.</span> Verbal 
       consent to feeding assessment and treatment. Consent and candour gained to liaise with GP and HCPs.
-      VOC: Child appeared clean, well and settled. Current age: <input type="number" class="age" name="age"  placeholder="AGE" style="width: 50px;">. 
+      VOC: Child appeared clean, well and settled. Current age: <input type="number" id="age1" name="age1"  placeholder="AGE" style="width: 50px;">. 
     
       </div>
       <!--Option 1 END-->
@@ -54,11 +54,11 @@
 
         <input type="text" id="name2" name="name2"  placeholder="NAME"> was referred for an eating, drinking and swallowing assessment by <input type="text" id="refname2" name="refname2"  placeholder="REFERER NAME" size="12">, <input type="text" id="refpof2" name="refprof2"  placeholder="REFERER PROFESSION" size="20">. 
         <select id="comm" name="comm">
-          <option value="comm1">Video</option>
-          <option value="comm2">Telephone</option>
-        </select> consultation conducted with <input type="text" id="broughtby" name="broughtby"  placeholder="BROUGHT BY" size="10">. <input type="checkbox" id="interpreter2" name="interpreter2" ><span id="interText2" style="text-decoration:line-through;">An interpreter was also present.</span> Verbal 
+          <option value="Video">Video</option>
+          <option value="Telephone">Telephone</option>
+        </select> consultation conducted with <input type="text" id="broughtby2" name="broughtby2"  placeholder="BROUGHT BY" size="10">. <input type="checkbox" id="interpreter2" name="interpreter2" ><span id="interText2" style="text-decoration:line-through;">An interpreter was also present.</span> Verbal 
         consent to feeding ax and treatment; consent and candour gained to liaise with GP and HCPs; consent gained for use of WhatsApp for purpose of video consultations and video recordings of clinical bedside ax. 
-        <input type="checkbox" id="childSeen" name="childSeen" ><span id="childSeenText" style="text-decoration:line-through;">Child was not seen during the appointment but reported to be well.</span> Current age: <input type="number" class="age" name="age"  placeholder="AGE" style="width: 50px;">.
+        <input type="checkbox" id="childSeen" name="childSeen" ><span id="childSeenText" style="text-decoration:line-through;">Child was not seen during the appointment but reported to be well.</span> Current age: <input type="number" id="age2" name="age"  placeholder="AGE" style="width: 50px;">.
       
       </div>
       <!--Option 2 END-->
@@ -198,13 +198,13 @@
             </select> 
             <input id="sec6_1_3" type="number" placeholder="NUM" style="width: 50px;">
           </li>
-          <li><input type="checkbox" id="last1" name="last1" checked><span id="last1txt">SLT RV in <input id="sec6_2_1" type="text"> months with view to <input id="sec_6_2_2" type="text">.</li>
-          <li><input type="checkbox" id="last2" name="last2" checked><span id="last2txt">DC from SLT with recommendations.</li>
-          <li><input type="checkbox" id="last3" name="last3" checked><span id="last3txt">Internal referral for CDT communication.</li>
-          <li><input type="checkbox" id="last4" name="last4" checked><span id="last4txt">Letter to GP for: <input id="sec6_3" type="text" placeholder="">.</li>
-          <li><input type="checkbox" id="last5" name="last5" checked><span id="last5txt">Refferal for VFSS at: <input id="sec6_4" type="text" placeholder="">.</li>
-          <li><input type="checkbox" id="last6" name="last6" checked><span id="last6txt">Referral to SSOT for supportive seating at mealtimes.</li>
-          <li><input type="checkbox" id="last7" name="last7" checked><span id="last7txt">Referral / Contact DT re: <input id="sec6_5" type="text" placeholder=""></li>
+          <li><input type="checkbox" id="last1" name="last1" checked><span id="last1txt">SLT RV in <input id="sec6_2_1" type="text"> months with view to <input id="sec_6_2_2" type="text"></span>.</li>
+          <li><input type="checkbox" id="last2" name="last2" checked><span id="last2txt">DC from SLT with recommendations.</span></li>
+          <li><input type="checkbox" id="last3" name="last3" checked><span id="last3txt">Internal referral for CDT communication.</span></li>
+          <li><input type="checkbox" id="last4" name="last4" checked><span id="last4txt">Letter to GP for: <input id="sec6_3" type="text" placeholder="">.</span></li>
+          <li><input type="checkbox" id="last5" name="last5" checked><span id="last5txt">Refferal for VFSS at: <input id="sec6_4" type="text" placeholder="">.</span></li>
+          <li><input type="checkbox" id="last6" name="last6" checked><span id="last6txt">Referral to SSOT for supportive seating at mealtimes.</span></li>
+          <li><input type="checkbox" id="last7" name="last7" checked><span id="last7txt">Referral / Contact DT re: <input id="sec6_5" type="text" placeholder="">.</span></li>
         </ul>
       </div>
       <!-- Section 6 END -->
