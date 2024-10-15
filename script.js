@@ -148,7 +148,7 @@ function generatePDF() {
     smallGap()
     textBold("Case History")
     smallGap()
-    listItem(`Main concerns reported by: ${valueField("reportedBy")}`)
+    listItem(`Main concerns reported by ${valueField("reportedBy")}: ${valueField("reportedBy_2")}`)
     //newLine()
     listItem(`Strategies parents have attempted already: ${valueField("sec2_1")}`)
     //newLine()
